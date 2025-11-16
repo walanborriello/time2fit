@@ -1,0 +1,13 @@
+framework:
+    default_locale: en
+    csrf_protection:
+        enabled: false
+
+cors:
+    defaults:
+        allow_origin: ['*']
+        allow_methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
+        allow_headers: ['Content-Type', 'Authorization', 'X-Requested-With']
+        allow_credentials: true
+        max_age: 3600
+

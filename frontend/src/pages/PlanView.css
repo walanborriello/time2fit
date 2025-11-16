@@ -1,0 +1,59 @@
+.plan-view {
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+.plan-view-content {
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.plan-summary-card {
+  margin-bottom: 1.5rem;
+}
+
+.exercise-card {
+  margin-bottom: 1rem;
+}
+
+.exercise-card-content {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.exercise-image {
+  width: 72px;
+  height: 72px;
+  border-radius: 8px;
+  border: 2px solid var(--t2f-title);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.exercise-info {
+  flex: 1;
+}
+
+.exercise-info h3 {
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+}
+
+.exercise-info p {
+  color: #aaaaaa;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.exercise-rest {
+  color: var(--t2f-accent-blue);
+}
+
+@media (min-width: 768px) {
+  .plan-view-content {
+    padding: 2rem;
+  }
+}
+

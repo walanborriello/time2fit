@@ -1,0 +1,25 @@
+parameters:
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+
+    App\Service\AiDescriptionService:
+        arguments:
+            $apiKey: '%env(OPENAI_API_KEY)%'
+
+    App\Service\MediaTranscodingService:
+        arguments:
+            $cloudinaryCloudName: '%env(default::string:CLOUDINARY_CLOUD_NAME)%'
+            $cloudinaryApiKey: '%env(default::string:CLOUDINARY_API_KEY)%'
+            $cloudinaryApiSecret: '%env(default::string:CLOUDINARY_API_SECRET)%'
+            $useCloudinary: '%env(bool:USE_CLOUDINARY)%'
+

@@ -1,0 +1,79 @@
+.dashboard-client {
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+.dashboard-client-content {
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboard-client-greeting {
+  margin-bottom: 2rem;
+}
+
+.dashboard-client-greeting h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-client-plan-card {
+  margin-bottom: 1.5rem;
+}
+
+.plan-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.plan-badge {
+  background-color: var(--t2f-btn-primary);
+  color: #000000;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.plan-info {
+  color: #aaaaaa;
+  font-size: 0.875rem;
+}
+
+.exercise-preview-card {
+  margin-bottom: 1rem;
+}
+
+.exercise-preview-content {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.exercise-preview-image {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid var(--t2f-title);
+  object-fit: cover;
+}
+
+.exercise-preview-info h3 {
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.exercise-preview-info p {
+  color: #aaaaaa;
+  font-size: 0.875rem;
+}
+
+@media (min-width: 768px) {
+  .dashboard-client-content {
+    padding: 2rem;
+  }
+}
+

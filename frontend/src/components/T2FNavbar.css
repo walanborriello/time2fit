@@ -1,0 +1,48 @@
+.t2f-navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--t2f-card-bg);
+  border-top: 1px solid #333333;
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5rem 0;
+  z-index: 1000;
+}
+
+.t2f-navbar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  color: #888888;
+  text-decoration: none;
+  transition: color 0.2s;
+  min-width: 60px;
+}
+
+.t2f-navbar-item:hover {
+  color: var(--t2f-text);
+}
+
+.t2f-navbar-item--active {
+  color: var(--t2f-title);
+}
+
+.t2f-navbar-icon {
+  font-size: 1.5rem;
+}
+
+.t2f-navbar-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .t2f-navbar {
+    display: none;
+  }
+}
+

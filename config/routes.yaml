@@ -1,0 +1,21 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+api_login:
+    path: /api/login
+    methods: [POST]
+    controller: App\Controller\Api\AuthController::login
+
+api_logout:
+    path: /api/logout
+    methods: [POST]
+    controller: App\Controller\Api\AuthController::logout
+
+api_me:
+    path: /api/me
+    methods: [GET]
+    controller: App\Controller\Api\AuthController::me
+

@@ -1,0 +1,36 @@
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: var(--t2f-bg);
+}
+
+.login-container {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.login-logo {
+  max-width: 200px;
+  height: auto;
+}
+
+.login-card {
+  width: 100%;
+}
+
+.login-error {
+  color: var(--t2f-accent-red);
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: rgba(237, 56, 51, 0.1);
+  border-radius: 4px;
+}
+

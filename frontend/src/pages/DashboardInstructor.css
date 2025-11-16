@@ -1,0 +1,17 @@
+.dashboard-instructor {
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+.dashboard-instructor-content {
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .dashboard-instructor-content {
+    padding: 2rem;
+  }
+}
+

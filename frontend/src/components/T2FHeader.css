@@ -1,0 +1,64 @@
+.t2f-header {
+  background-color: var(--t2f-card-bg);
+  padding: 1rem;
+  border-bottom: 1px solid #333333;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.t2f-header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 1rem;
+}
+
+.t2f-header-logo {
+  flex-shrink: 0;
+}
+
+.t2f-logo {
+  height: 40px;
+  width: auto;
+}
+
+.t2f-header-title {
+  flex: 1;
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.t2f-header-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.t2f-header-logout {
+  background-color: transparent;
+  color: var(--t2f-text);
+  border: 1px solid var(--t2f-text);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.t2f-header-logout:hover {
+  background-color: var(--t2f-accent-red);
+  border-color: var(--t2f-accent-red);
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .t2f-header-title {
+    display: none;
+  }
+  
+  .t2f-logo {
+    height: 32px;
+  }
+}
+

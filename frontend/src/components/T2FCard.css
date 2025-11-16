@@ -1,0 +1,19 @@
+.t2f-card {
+  background-color: var(--t2f-card-bg);
+  border-radius: var(--t2f-radius-card);
+  padding: 1rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 480px) {
+  .t2f-card {
+    padding: 0.75rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .t2f-card {
+    padding: 1.5rem;
+  }
+}
+

@@ -1,0 +1,17 @@
+.progress-form {
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+.progress-form-content {
+  padding: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .progress-form-content {
+    padding: 2rem;
+  }
+}
+
