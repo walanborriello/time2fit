@@ -29,7 +29,16 @@ class RegisterController extends AbstractController
     #[Route('/register', name: 'api_register', methods: ['POST'])]
     public function register(Request $request): JsonResponse
     {
-        $data = json_decode($request->getContent(), true);
+        try {
+            $data = json_decode($request->getContent(), true);
+            
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                return new JsonResponse(['success' => false, 'message' => 'JSON non valido: ' . json_last_error_msg()], Response::HTTP_BAD_REQUEST);
+            }
+            
+            if (!$data) {
+                return new JsonResponse(['success' => false, 'message' => 'Dati mancanti'], Response::HTTP_BAD_REQUEST);
+            }
 
         $constraints = new Assert\Collection([
             'email' => [new Assert\NotBlank(), new Assert\Email()],
@@ -70,6 +79,7 @@ class RegisterController extends AbstractController
             $client->setLastName($data['lastName'] ?? null);
         }
         $client->setUser($user);
+        $user->setClient($client);
 
         $this->entityManager->persist($client);
         $this->entityManager->flush();
@@ -83,6 +93,17 @@ class RegisterController extends AbstractController
                 'roles' => $user->getRoles(),
             ],
         ], Response::HTTP_CREATED);
+        } catch (\Exception $e) {
+            // In dev, mostra l'errore completo per debug
+            $errorMessage = $e->getMessage();
+            if ($this->getParameter('kernel.environment') === 'dev') {
+                $errorMessage .= ' - File: ' . $e->getFile() . ':' . $e->getLine();
+            }
+            return new JsonResponse([
+                'success' => false,
+                'message' => 'Errore durante la registrazione: ' . $errorMessage,
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
     }
 }
 

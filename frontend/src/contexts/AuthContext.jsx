@@ -1,4 +1,5 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';
+import React, { createContext, useState, useEffect, useContext, useRef } from 'react';
+import axios from 'axios';
 import api from '../api/http';
 
 const AuthContext = createContext(null);
@@ -14,9 +15,41 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const hasCheckedRef = useRef(false);
 
   useEffect(() => {
-    checkAuth();
+    let mounted = true;
+    
+    // Chiama solo una volta
+    if (!hasCheckedRef.current) {
+      hasCheckedRef.current = true;
+      
+      api.get('/me')
+        .then(response => {
+          if (mounted && response.data.success) {
+            setUser(response.data.user);
+          } else if (mounted) {
+            setUser(null);
+          }
+        })
+        .catch(error => {
+          if (mounted) {
+            setUser(null);
+          }
+        })
+        .finally(() => {
+          if (mounted) {
+            setLoading(false);
+          }
+        });
+    } else {
+      setLoading(false);
+    }
+    
+    return () => {
+      mounted = false;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const checkAuth = async () => {
@@ -24,6 +57,8 @@ export const AuthProvider = ({ children }) => {
       const response = await api.get('/me');
       if (response.data.success) {
         setUser(response.data.user);
+      } else {
+        setUser(null);
       }
     } catch (error) {
       setUser(null);

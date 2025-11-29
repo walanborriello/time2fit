@@ -13,9 +13,20 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/api/clients')]
-#[IsGranted('ROLE_INSTRUCTOR')]
 class ClientController extends AbstractController
 {
+    private function checkAccess(): void
+    {
+        $user = $this->getUser();
+        if (!$user) {
+            throw $this->createAccessDeniedException();
+        }
+        $roles = $user->getRoles();
+        if (!in_array('ROLE_ADMIN', $roles) && !in_array('ROLE_INSTRUCTOR', $roles)) {
+            throw $this->createAccessDeniedException();
+        }
+    }
+
     public function __construct(
         private ClientRepository $clientRepository,
         private EntityManagerInterface $entityManager
@@ -25,6 +36,7 @@ class ClientController extends AbstractController
     #[Route('', name: 'api_clients_list', methods: ['GET'])]
     public function list(): JsonResponse
     {
+        $this->checkAccess();
         $user = $this->getUser();
         $instructorProfile = $user->getInstructorProfile();
         
@@ -58,6 +70,7 @@ class ClientController extends AbstractController
     #[Route('', name: 'api_clients_create', methods: ['POST'])]
     public function create(Request $request): JsonResponse
     {
+        $this->checkAccess();
         $data = json_decode($request->getContent(), true);
         
         $existing = $this->clientRepository->findByEmail($data['email'] ?? '');

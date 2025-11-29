@@ -10,16 +10,15 @@ export default defineConfig({
     },
   },
   server: {
-    proxy: {
-      '/api': {
-        target: 'http://gestionale.local',
-        changeOrigin: true,
-      },
-    },
+    host: '0.0.0.0',
+    allowedHosts: ['time2fit.local', 'localhost'],
+    // Proxy non più necessario: Nginx gestisce tutto
+    force: true, // Forza il reload
   },
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
   },
+  clearScreen: false,
 });
 

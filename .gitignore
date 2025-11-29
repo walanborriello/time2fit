@@ -31,3 +31,9 @@
 /public/uploads/
 ###< uploads ###
 
+###> production files ###
+/.htaccess
+/.env-prod
+/.env-prod.local
+###< production files ###
+

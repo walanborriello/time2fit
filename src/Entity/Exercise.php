@@ -35,6 +35,9 @@ class Exercise
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $muscleGroup = null;
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $aiPrompt = null;
+
     #[ORM\OneToMany(mappedBy: 'exercise', targetEntity: TrainingPlanExercise::class)]
     private Collection $trainingPlanExercises;
 
@@ -140,6 +143,17 @@ class Exercise
             }
         }
 
+        return $this;
+    }
+
+    public function getAiPrompt(): ?string
+    {
+        return $this->aiPrompt;
+    }
+
+    public function setAiPrompt(?string $aiPrompt): static
+    {
+        $this->aiPrompt = $aiPrompt;
         return $this;
     }
 }

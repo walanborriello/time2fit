@@ -1,3 +1,5 @@
+@import './styles/common.css';
+
 :root {
   --t2f-bg: #000000;
   --t2f-title: #00ff00;

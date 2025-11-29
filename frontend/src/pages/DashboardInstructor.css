@@ -1,5 +1,7 @@
 .dashboard-instructor {
   min-height: 100vh;
+  background: #000;
+  color: #fff;
   padding-bottom: 80px;
 }
 
@@ -9,9 +11,141 @@
   margin: 0 auto;
 }
 
-@media (min-width: 768px) {
-  .dashboard-instructor-content {
-    padding: 2rem;
-  }
+.instructor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
+.instructor-header h1 {
+  color: #00ff00;
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.error-card {
+  background: rgba(237, 56, 51, 0.1);
+  border: 1px solid #ed3833;
+  margin-bottom: 1rem;
+}
+
+.create-client-card {
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+}
+
+.create-client-card h2 {
+  color: #00ff00;
+  margin: 0 0 1rem 0;
+  font-size: 1.3rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #00ff00;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.clients-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.client-card {
+  padding: 1.5rem;
+}
+
+.client-card-header {
+  margin-bottom: 1rem;
+}
+
+.client-card-header h3 {
+  color: #00ff00;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.client-email {
+  color: #ccc;
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+}
+
+.client-badge {
+  display: inline-block;
+  background: rgba(0, 255, 0, 0.2);
+  color: #00ff00;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.client-card-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.client-card-actions button {
+  flex: 1;
+  min-width: 120px;
+}
+
+@media (max-width: 768px) {
+  .instructor-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .instructor-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+
+  .client-card-actions {
+    flex-direction: column;
+  }
+
+  .client-card-actions button {
+    width: 100%;
+  }
+}

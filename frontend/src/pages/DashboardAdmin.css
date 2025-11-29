@@ -1,17 +1,28 @@
-.dashboard-admin {
-  min-height: 100vh;
-  padding-bottom: 80px;
+/* Questo file ora usa le classi comuni da styles/common.css */
+/* Manteniamo solo stili specifici per questa pagina */
+
+.admin-section {
+  margin-top: 1.5rem;
 }
 
-.dashboard-admin-content {
-  padding: 1rem;
-  max-width: 1200px;
-  margin: 0 auto;
+.gym-type-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: bold;
 }
 
-@media (min-width: 768px) {
-  .dashboard-admin-content {
-    padding: 2rem;
-  }
+.gym-type-isotonica {
+  background: rgba(68, 181, 248, 0.2);
+  color: #44b5f8;
+  border: 1px solid #44b5f8;
 }
 
+.gym-type-funzionale {
+  background: rgba(249, 204, 73, 0.2);
+  color: #f9cc49;
+  border: 1px solid #f9cc49;
+}
+
+/* Media queries sono gestite in common.css */

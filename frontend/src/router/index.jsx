@@ -6,6 +6,7 @@ import Register from '../pages/Register';
 import DashboardClient from '../pages/DashboardClient';
 import DashboardInstructor from '../pages/DashboardInstructor';
 import DashboardAdmin from '../pages/DashboardAdmin';
+import ExerciseSetForm from '../pages/ExerciseSetForm';
 import PlanView from '../pages/PlanView';
 import ProgressForm from '../pages/ProgressForm';
 import AgendaPT from '../pages/AgendaPT';
@@ -82,6 +83,22 @@ const AppRouter = () => {
           element={
             <PrivateRoute requiredRole="ROLE_ADMIN">
               <DashboardAdmin />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/exercise-sets/new"
+          element={
+            <PrivateRoute requiredRole="ROLE_ADMIN">
+              <ExerciseSetForm />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/exercise-sets/:id/edit"
+          element={
+            <PrivateRoute requiredRole="ROLE_ADMIN">
+              <ExerciseSetForm />
             </PrivateRoute>
           }
         />

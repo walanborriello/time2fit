@@ -37,3 +37,12 @@
   font-size: 0.75rem;
 }
 
+.t2f-input-wrapper select.t2f-input {
+  cursor: pointer;
+}
+
+.t2f-input-wrapper select.t2f-input option {
+  background-color: #222;
+  color: var(--t2f-text);
+}
+

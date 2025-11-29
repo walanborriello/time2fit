@@ -1,0 +1,285 @@
+/* Classi comuni riutilizzabili per tutte le pagine */
+
+/* Layout base dashboard */
+.dashboard-base {
+  min-height: 100vh;
+  background: var(--t2f-bg);
+  color: var(--t2f-text);
+  padding-bottom: 80px;
+}
+
+.dashboard-content {
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header sezioni */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.section-header h1,
+.section-header h2 {
+  color: var(--t2f-title);
+  margin: 0;
+}
+
+.section-header h1 {
+  font-size: 1.8rem;
+}
+
+.section-header h2 {
+  font-size: 1.5rem;
+}
+
+/* Form comuni */
+.form-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-row > .form-group {
+  margin-bottom: 0;
+  flex: 1;
+  min-width: 0;
+}
+
+.form-group label {
+  display: block;
+  color: var(--t2f-text);
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: var(--t2f-text);
+  font-size: 1rem;
+  font-family: "Lato", sans-serif;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--t2f-title);
+}
+
+.form-input::placeholder {
+  color: #888;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Card comuni */
+.error-card {
+  background: rgba(237, 56, 51, 0.1);
+  border: 1px solid var(--t2f-accent-red);
+  margin-bottom: 1rem;
+}
+
+.create-form-card {
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+}
+
+.create-form-card h2,
+.create-form-card h3 {
+  color: var(--t2f-title);
+  margin: 0 0 1rem 0;
+}
+
+/* Liste comuni */
+.list-base {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.list-item-content {
+  flex: 1;
+  min-width: 200px;
+}
+
+.list-item-content h3 {
+  color: var(--t2f-title);
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.list-item-content p {
+  margin: 0.25rem 0;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.list-item-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.meta-text {
+  color: #888 !important;
+  font-size: 0.85rem !important;
+}
+
+/* Badge comuni */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.badge-primary {
+  background-color: var(--t2f-btn-primary);
+  color: #000000;
+}
+
+.badge-success {
+  background: rgba(0, 255, 0, 0.2);
+  color: var(--t2f-title);
+  border: 1px solid var(--t2f-title);
+}
+
+.badge-info {
+  background: rgba(68, 181, 248, 0.2);
+  color: var(--t2f-accent-blue);
+  border: 1px solid var(--t2f-accent-blue);
+}
+
+.badge-warning {
+  background: rgba(249, 204, 73, 0.2);
+  color: var(--t2f-btn-primary);
+  border: 1px solid var(--t2f-btn-primary);
+}
+
+/* Tabs comuni */
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tab {
+  padding: 0.75rem 1.5rem;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  color: var(--t2f-text);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  transition: all 0.3s;
+  font-family: "Lato", sans-serif;
+}
+
+.tab:hover {
+  background: #2a2a2a;
+  border-color: var(--t2f-title);
+}
+
+.tab.active {
+  background: var(--t2f-title);
+  color: #000;
+  border-color: var(--t2f-title);
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-content {
+    padding: 0.5rem;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .section-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .form-group-half {
+    margin-bottom: 1rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+
+  .list-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .list-item-actions {
+    width: 100%;
+  }
+
+  .list-item-actions button {
+    flex: 1;
+    width: 100%;
+  }
+
+  .tabs {
+    padding-bottom: 0.5rem;
+  }
+
+  .tab {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+

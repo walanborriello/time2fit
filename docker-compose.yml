@@ -21,9 +21,16 @@ services:
       context: ./docker/php
       dockerfile: Dockerfile
     container_name: gym_php
+    env_file:
+      - .env
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - HUGGINGFACE_API_KEY=${HUGGINGFACE_API_KEY}
+      - AI_PROVIDER=${AI_PROVIDER}
     volumes:
       - .:/var/www/html
       - ./docker/php/php.ini:/usr/local/etc/php/conf.d/custom.ini
+      - ./docker/php/www.conf:/usr/local/etc/php-fpm.d/www.conf
     depends_on:
       - db
     networks:
@@ -83,6 +90,19 @@ services:
         php bin/console app:schede:promemoria --env=dev || true;
         sleep 3600;
       done"
+
+  node:
+    image: node:20-alpine
+    container_name: gym_node
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    working_dir: /app
+    ports:
+      - "5173:5173"
+    networks:
+      - gym_network
+    command: sh -c "npm install && npm run dev -- --host"
 
 volumes:
   db_data:

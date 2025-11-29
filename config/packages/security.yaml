@@ -25,7 +25,6 @@ security:
                 failure_handler: App\Security\LoginFailureHandler
             logout:
                 path: /api/logout
-                handler: App\Security\LogoutSuccessHandler
 
     access_control:
         - { path: ^/api/login, roles: PUBLIC_ACCESS }

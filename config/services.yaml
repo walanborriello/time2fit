@@ -14,7 +14,9 @@ services:
 
     App\Service\AiDescriptionService:
         arguments:
-            $apiKey: '%env(OPENAI_API_KEY)%'
+            $openAiApiKey: '%env(default::string:OPENAI_API_KEY)%'
+            $huggingFaceApiKey: '%env(default::string:HUGGINGFACE_API_KEY)%'
+            $aiProvider: '%env(default::string:AI_PROVIDER)%'
 
     App\Service\MediaTranscodingService:
         arguments:

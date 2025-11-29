@@ -8,6 +8,24 @@ Sistema completo di gestione palestra con backend Symfony 6.4 (API JSON) e front
 - Docker e Docker Compose
 - Node.js 18+ e npm
 
+### 0. Configurazione File Hosts (Windows)
+
+**IMPORTANTE**: Prima di avviare Docker, configura il file hosts per far funzionare `time2fit.local`.
+
+Apri PowerShell come **Amministratore** ed esegui:
+```powershell
+Add-Content -Path C:\Windows\System32\drivers\etc\hosts -Value "`n127.0.0.1    time2fit.local"
+```
+
+Oppure modifica manualmente `C:\Windows\System32\drivers\etc\hosts` aggiungendo:
+```
+127.0.0.1    time2fit.local
+```
+
+Verifica con: `ping time2fit.local` (dovrebbe rispondere a 127.0.0.1)
+
+Vedi `SETUP_LOCALE.md` per dettagli completi.
+
 ### 1. Avvia i container Docker
 
 ```bash
@@ -37,7 +55,7 @@ php bin/console app:seed:config
 ### 5. Crea admin iniziale
 
 ```bash
-php bin/console app:user:create-admin admin@gestionale.local SuperPasswordSicura!
+php bin/console app:user:create-admin admin@time2fit.local SuperPasswordSicura!
 ```
 
 ### 6. Setup Frontend
@@ -123,9 +141,51 @@ php bin/console cache:clear --env=prod
 
 ## 🔧 Configurazione
 
-### OpenAI (AI Descriptions)
+### AI Descriptions - Opzionale
 
-Imposta `OPENAI_API_KEY` in `.env`
+Il sistema supporta **più provider AI** per generare descrizioni esercizi:
+
+#### Opzione 1: Hugging Face (GRATUITO - Consigliato) ⭐
+
+**Completamente gratuito**, nessun limite di quota:
+1. Vai su https://huggingface.co/join
+2. Crea un account gratuito
+3. Vai su https://huggingface.co/settings/tokens
+4. Crea un nuovo token (read permission)
+5. Aggiungi in `.env`:
+   ```
+   AI_PROVIDER=huggingface
+   HUGGINGFACE_API_KEY=hf_tua-chiave-qui
+   ```
+
+**Limiti gratuiti**: ~1000 richieste/giorno senza API key, illimitate con API key gratuita.
+
+#### Opzione 2: OpenAI (A pagamento)
+
+Per usare OpenAI:
+1. Crea un account su https://platform.openai.com
+2. Vai su https://platform.openai.com/api-keys
+3. Crea una nuova API key
+4. Aggiungi in `.env`:
+   ```
+   AI_PROVIDER=openai
+   OPENAI_API_KEY=sk-tua-chiave-qui
+   ```
+
+#### Opzione 3: Auto (Default)
+
+Il sistema sceglie automaticamente:
+- Se OpenAI è configurato → usa OpenAI
+- Altrimenti → usa Hugging Face (gratuito)
+
+Aggiungi in `.env`:
+```
+AI_PROVIDER=auto
+OPENAI_API_KEY=sk-tua-chiave-qui  # Opzionale
+HUGGINGFACE_API_KEY=hf_tua-chiave-qui  # Opzionale
+```
+
+**Nota**: Se nessun provider è configurato, il sistema userà descrizioni di fallback automatiche.
 
 ### Cloudinary (Media Storage)
 
