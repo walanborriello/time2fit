@@ -1,0 +1,26 @@
+# .htaccess universale - funziona sia in produzione (OVH /www/public) che in locale (/public)
+# Gestisce automaticamente il redirect alla cartella corretta
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Se la richiesta è già in /www/public/ o /public/, lascia passare
+    RewriteCond %{REQUEST_URI} ^/(www/)?public/
+    RewriteRule ^ - [L]
+    
+    # Se il file richiesto esiste nella root, servilo direttamente
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [L]
+    
+    # Se la directory richiesta esiste nella root, servila direttamente
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+    
+    # In produzione OVH: redirect a /www/public/
+    # Controlla se esiste /www/public nella root del documento
+    RewriteCond %{DOCUMENT_ROOT}/www/public -d
+    RewriteRule ^(.*)$ /www/public/$1 [L]
+    
+    # In locale o se /www/public non esiste: redirect a /public/
+    RewriteRule ^(.*)$ /public/$1 [L]
+</IfModule>

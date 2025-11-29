@@ -33,7 +33,7 @@
 ###< uploads ###
 
 ###> production files ###
-/.htaccess
+# .htaccess è nel repository (serve per OVH)
 /.env-prod
 /.env-prod.local
 ###< production files ###
